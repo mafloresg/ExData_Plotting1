@@ -16,15 +16,13 @@ shpc <- hpc[hpc$Date %in% c("1/2/2007","2/2/2007"),]
 shpc$datetime <- as.POSIXlt(paste(as.Date(shpc$Date,format="%d/%m/%Y"), shpc$Time, sep=" "))
 
 
-## Print the plot
+## Print the plot in a png file
+
+png(filename = "plot3.png", width = 480, height = 480, units = "px")
 
 plot(shpc$datetime, shpc$Sub_metering_1, type="l", ylab="Energy sub metering", xlab="")
 with(shpc, lines(datetime,Sub_metering_2, col="red"))
 with(shpc, lines(datetime,Sub_metering_3, col="blue"))
-legend("topright", lty=1, col=c("black", "red", "blue"), legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), 
-       y.intersp=0.5, xjust=1)
+legend("topright", lty=1, col=c("black", "red", "blue"), legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
 
-## Export the plot3 in a png file
-
-dev.copy(png, file="plot3.png", width=480, height=480)
 dev.off()
