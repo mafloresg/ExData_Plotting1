@@ -18,7 +18,7 @@ shpc$datetime <- as.POSIXlt(paste(as.Date(shpc$Date,format="%d/%m/%Y"), shpc$Tim
 
 ## Export the plots in a png file
 
-png(filename = "plot4.png", width = 480, height = 480, units = "px")
+png(filename = "plot4.png", width = 480, height = 480, units = "px", bg = "transparent")
 
 par(mfrow= c(2,2))
 with(shpc, {

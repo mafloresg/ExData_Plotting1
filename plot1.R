@@ -13,7 +13,7 @@ untar('exdata_data_household_power_consumption.zip')
 hpc <- read.table("household_power_consumption.txt", sep=";",header=TRUE, dec=".", fill=TRUE)
 shpc <- hpc[hpc$Date %in% c("1/2/2007","2/2/2007"),]
 
-png(filename = "plot1.png", width = 480, height = 480, units = "px")
+png(filename = "plot1.png", width = 480, height = 480, units = "px", bg = "transparent")
 hist(shpc$Global_active_power, breaks=12, col=2, border=1, main="Global Active Power", 
      xlab="Global Active Power (kilowatts)")
 dev.off()

@@ -18,7 +18,7 @@ shpc$datetime <- as.POSIXlt(paste(as.Date(shpc$Date,format="%d/%m/%Y"), shpc$Tim
 
 ## Print the plot in a png file
 
-png(filename = "plot3.png", width = 480, height = 480, units = "px")
+png(filename = "plot3.png", width = 480, height = 480, units = "px", bg = "transparent")
 
 plot(shpc$datetime, shpc$Sub_metering_1, type="l", ylab="Energy sub metering", xlab="")
 with(shpc, lines(datetime,Sub_metering_2, col="red"))

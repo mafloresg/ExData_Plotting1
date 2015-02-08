@@ -18,6 +18,6 @@ shpc <- hpc[hpc$Date %in% c("1/2/2007","2/2/2007"),]
 
 shpc$datetime <- as.POSIXlt(paste(as.Date(shpc$Date,format="%d/%m/%Y"), shpc$Time, sep=" "))
 
-png(filename = "plot2.png", width = 480, height = 480, units = "px")
+png(filename = "plot2.png", width = 480, height = 480, units = "px", bg = "transparent")
 plot(shpc$datetime, shpc$Global_active_power, type="l", ylab="Global Active Power (kilowatts)", xlab="")
 dev.off()
