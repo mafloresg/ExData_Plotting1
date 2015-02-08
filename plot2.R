@@ -1,4 +1,4 @@
-## Plot1: histogram
+## Plot2: timeline
 
 ## Download and unzip the data file
 
@@ -7,14 +7,18 @@ download.file(fileUrl, destfile="exdata_data_household_power_consumption.zip", m
 untar('exdata_data_household_power_consumption.zip')
 
 
-## Load the file, subset the data for the two days asked and print the histogram
+## Load the file and subset the data for the two days asked
+## The same as plot1.R
 
 hpc <- read.table("household_power_consumption.txt", sep=";",header=TRUE, dec=".", fill=TRUE)
 shpc <- hpc[hpc$Date %in% c("1/2/2007","2/2/2007"),]
-hist(shpc$Global_active_power, breaks=12, col=2, border=1, main="Global Active Power", 
-     xlab="Global Active Power (kilowatts)")
 
-## Export the plot1 in a png file
+## Create a new datetime column and print the plot
 
-dev.copy(png, file="plot1.png", width=480, height=480)
+shpc$datetime <- as.POSIXlt(paste(as.Date(shpc$Date,format="%d/%m/%Y"), shpc$Time, sep=" "))
+plot(shpc$datetime, shpc$Global_active_power, type="l", ylab="Global Active Power (kilowatts)", xlab="")
+
+## Export the plot2 in a png file
+
+dev.copy(png, file="plot2.png", width=480, height=480)
 dev.off()
